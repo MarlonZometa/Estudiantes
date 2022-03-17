@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CURDOprationsDimo.Models.Estudiante>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Estudiantes</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-info">Insertar Estudiantes</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EstudiantesId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstudiantesName)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.EstudiantesLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarreraId)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstudiantesId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstudiantesName)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.EstudiantesLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Carrera.CarreraName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.EstudiantesId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.EstudiantesId  }
+                ,new{onclick="return confirm('¿Estás seguro de borrarlo... ?')"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
